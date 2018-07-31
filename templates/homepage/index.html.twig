@@ -14,6 +14,13 @@
 
         }
 
+        body{
+            background: darkslategray;
+        }
+
+        .terminal{
+            white-space:pre; /* or pre-wrap if you want wrapping to still work. */
+        }
     </style>
 {% endblock %}
 {% block body %}
@@ -40,12 +47,57 @@
         </a>
         </div>
     </div>
-    <div class="ui raised segment" style="margin: 20px; margin-top: 70px">
-        <p>test</div>
 
-    <div class="">
-        <img class="ui fluid image" src=img/servers.jpg>
+
+
+
+
+    <div class="ui card" style="margin: 25px; margin-top: 75px">
+        <div class="image">
+            <img src="{{ asset('img/diego_moto.jpg') }}">
+        </div>
+        <div class="content">
+            <a class="header" href="http://www.github.com/riera90">Diego Rodríguez Riera</a>
+            <div class="meta">
+                <span class="date">born in 1998</span>
+            </div>
+            <div class="description">
+                Backend developer
+            </div>
+        </div>
+        <div class="extra content">
+            <p>
+                <i class="code icon"></i>
+                C, C++, PHP, Python, Makefile, Git
+            </p>
+        </div>
     </div>
+
+    <div class="ui raised segment" style="fixed; position:absolute ;left: 350px; top: 60px; right: 25px; height: 430px; background: black">
+        <p style="color: lime;" class="terminal">
+Hi, I am a backend developer, I like dark interfaces, and so is my website... <br>
+Hello diego! It's martes, 31 of julio 2018 01:48
+
+___       ___     / __      ___     // //
+  / /   ((   ) ) //   ) ) //___) ) // //
+ / /     \ \    //   / / //       // //
+/ /__ //   ) ) //   / / ((____   // //     4.15.0
+
+diego@alpha ~ $ wd
+diego@alpha /mnt/data_1/code $ ls
+'Algegra lineal.tar.gz'    ed		                  pas           todo
+crypted		          generic-makefile       pr4           ucoworks
+dos.py			  ManageYourAirport   random    willy
+        </p>
+    </div>
+    <p style="color: lime; fixed; position: absolute; top:450px; left: 335px;" class="terminal">
+        terminal $
+    </p>
+
+    <div class="ui transparent input" style="fixed; position:absolute; top: 469px; left: 433px; right: 90px;">
+        <input placeholder="enter your command" style="color:lime" type="text">
+    </div>
+
 
 
 {% endblock %}
