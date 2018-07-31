@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}homepage{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.0/semantic.min.css"/>
+    <style type="text/css">
+        .ui.secondary.pointing.menu{
+            margin: 10px;
+            background: white;
+        }
+
+        .ui.fixed.sticky + p {
+            margin-top: 10px;
+
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="ui secondary pointing menu fixed sticky">
+        <a class="item active">
+            About me
+        </a>
+        <a class="item">
+            Contact me
+        </a>
+        <a class="item">
+            My projects
+        </a>
+        <a class="item">
+            Resume
+        </a>
+
+        <a href="http://github.com/riera90" style="margin-left: 10px">
+            <i class="big github black link icon"></i>
+        </a>
+
+    </div>
+    <div>
+        <!img class="ui fluid image" src=img/servers.jpg>
+    </div>
+
+
+{% endblock %}
