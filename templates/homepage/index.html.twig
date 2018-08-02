@@ -42,11 +42,12 @@
         <p style="color: lime; fixed; position: absolute; top:393px; left: 15px;">
             diego@gamma $
         </p>
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
-        {{ form_end(form) }}
         <div class="ui transparent input" style="fixed; position:absolute; top: 393px; left: 123px; right: 90px;">
-            <input placeholder="enter your command" style="color:lime" type="text">
+
+        {{ form_start(form) }}
+        {{ form_widget(form.input, { 'attr': {'style' : 'color:lime', 'placeholder' : 'enter your commnad' } }) }}
+            <!input name="input" placeholder="enter your command" style="color:lime" type="text">
+        {{ form_end(form) }}
         </div>
     </div>
 
