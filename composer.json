@@ -25,6 +25,7 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "easycorp/easyadmin-bundle": "^1.17",
         "symfony/debug-pack": "*",
         "symfony/dotenv": "^4.1",
         "symfony/maker-bundle": "^1.0",
