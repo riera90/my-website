@@ -1,54 +1,20 @@
 {% extends 'base.html.twig' %}
-{% block title %}homepage{% endblock %}
-{% block stylesheets %} {{ parent() }} {% endblock %}
-{% block topbar %} {{ parent() }} {% endblock %}
+
+{% block title %}Hello {{ controller_name }}!{% endblock %}
+
 {% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
 
-    <div class="ui card" style="margin: 175px; margin-top: 75px">
-        <div class="image">
-            <img src="{{ asset('img/diego_moto.jpg') }}">
-        </div>
-        <div class="content">
-            <a class="header" href="http://www.github.com/riera90">Diego Rodríguez Riera</a>
-            <div class="meta">
-                <span class="date">born in 1998</span>
-            </div>
-            <div class="description">
-                Backend developer
-            </div>
-        </div>
-        <div class="extra content">
-            <p>
-                <i class="code icon"></i>
-                C, C++, PHP, Python, Makefile, Git
-            </p>
-        </div>
+    <div class="example-wrapper">
+        <h1>Hello {{ controller_name }}! ✅</h1>
+
+        This friendly message is coming from:
+        <ul>
+            <li>Your controller at <code><a href="{{ 'src/Controller/HomepageController.php'|file_link(0) }}">src/Controller/HomepageController.php</a></code></li>
+            <li>Your template at <code><a href="{{ 'templates/homepage/index.html.twig'|file_link(0) }}">templates/homepage/index.html.twig</a></code></li>
+        </ul>
     </div>
-
-    <div class="ui raised segment" style="fixed; position:absolute ;left: 500px; top: 60px; right: 200px; height: 430px; background: black">
-        <p></p>{#for filling the first line#}
-        {% if lines %}
-            {% for line in lines %}
-                <p style="color: lime; margin-top: -16px">
-                    {{ line }}<br>
-                </p>
-            {% endfor %}
-        {% else %}
-            <span style="color: lime; margin-top: -10px" class="">
-                error 500 please contact the webmaster at <a href="http://www.github.com/riera90/my-website">github</a> and open an isue
-            </span>
-        {% endif %}
-
-        <p style="color: lime; fixed; position: absolute; top:393px; left: 15px;">
-            diego@gamma $
-        </p>
-        <div class="ui transparent input" style="fixed; position:absolute; top: 393px; left: 123px; right: 90px;">
-
-        {{ form_start(form) }}
-        {{ form_widget(form.input, { 'attr': {'style' : 'color:lime', 'placeholder' : 'enter your commnad' } }) }}
-            <!input name="input" placeholder="enter your command" style="color:lime" type="text">
-        {{ form_end(form) }}
-        </div>
-    </div>
-
 {% endblock %}
