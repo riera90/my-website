@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\Terminal;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Symfony\Bridge\Doctrine\RegistryInterface;
+
+/**
+ * @method Terminal|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Terminal|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Terminal[]    findAll()
+ * @method Terminal[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ */
+class TerminalRepository extends ServiceEntityRepository
+{
+    public function __construct(RegistryInterface $registry)
+    {
+        parent::__construct($registry, Terminal::class);
+    }
+
+    /**
+     * @return Terminal[] Returns an array of Terminal objects
+     */
+
+    public function findTerminalByPhpsessid($phpsessid)
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.phpsessid = :val')
+            ->setParameter('val', $phpsessid)
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
+    }
+
+
+    /*
+    public function findOneBySomeField($value): ?Terminal
+    {
+        return $this->createQueryBuilder('t')
+            ->andWhere('t.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
+}

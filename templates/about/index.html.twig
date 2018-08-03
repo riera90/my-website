@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+{% block title %}homepage{% endblock %}
+{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block topbar %} {{ parent() }} {% endblock %}
+{% block body %}
+
+
+    <div class="ui card" style="margin: 175px; margin-top: 75px">
+        <div class="image">
+            <img src="{{ asset('img/diego_moto.jpg') }}">
+        </div>
+        <div class="content">
+            <a class="header" href="http://www.github.com/riera90">Diego Rodríguez Riera</a>
+            <div class="meta">
+                <span class="date">born in 1998</span>
+            </div>
+            <div class="description">
+                Backend developer
+            </div>
+        </div>
+        <div class="extra content">
+            <p>
+                <!img src="/img/code_icon.png" style="height: 30px; margin-top: -5px;">
+                <i class="keyboard icon"></i>
+                C, C++, PHP, Makefile, Git, Bash
+            </p>
+        </div>
+    </div>
+
+
+
+
+    <div class="ui raised segment" style="fixed; position:absolute ;left: 500px; top: 60px; right: 200px; height: 430px; background: black">
+        <p></p>{#for filling the first line#}
+        {% if lines %}
+            {% for line in lines %}
+                <p style="color: lime; margin-top: -16px">
+                    {{ line }}<br>
+                </p>
+            {% endfor %}
+        {% else %}
+            <span style="color: lime; margin-top: -10px" class="">
+                error 500 please contact the webmaster at <a href="http://www.github.com/riera90/my-website">github</a> and open an isue
+            </span>
+        {% endif %}
+
+        <p style="color: lime; fixed; position: absolute; top:393px; left: 15px;">
+            diego@gamma $
+        </p>
+
+        {{ form_start(form) }}
+        <div class="ui transparent input" style="fixed; position:absolute; top: 393px; left: 120px; right: 90px;">
+            {{ form_widget(form.input, { 'attr': {'style' : 'color:lime', 'placeholder' : 'enter your commnad', 'value' : '' } }) }}
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+
+
+    {#<div class="ui horizontal segments" style="background: transparent; margin: 175px; top: -75px; border: transparent; border 0px">
+
+
+        <div class="ui segment">
+            <div class="ui raised segment" style="background: dimgrey; color: white; margin-right: 100px; font-size: large">
+                <h2>About me</h2>
+                <p>
+                    Hello! my name is Diego, I am a passionated backend developer, I have coded in C, C++, PHP, Python, Bash,
+                    Zsh, Clips and Makefile, but I am not afraid to learn something new, in fact, I love it! <br>
+                    I have participated in numerous projects, so I perform well with people. <br><br>
+                    I am one of the leaders of a software group in my university and a common attendee and speaker of talks
+                    in the Free Source Club in the University of Córdoba.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="ui segment" style="width: 500px">
+            <img class="ui medium rounded image" src="/img/linux_book.jpg" style="">
+        </div>#}
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin: 175px; top: -75px; font-size: large">
+        <img class="ui medium rounded image" src="/img/linux_book.jpg" style="float: right; width: 150px;margin: 25px; margin-top: 70px; ">
+        <h2>About me</h2>
+        <p>
+            Hello! my name is Diego, I am a passionated backend developer, I have coded in C, C++, PHP, Python, Bash,
+            Zsh, Clips, Makefile and assembly, but I am not afraid to learn something new, in fact, I love it! <br>
+            I have participated in numerous projects, so I perform well with people. <br><br>
+            I am one of the leaders of a software group in my university and a common attendee and speaker of talks
+            in the Free Source Club in the University of Córdoba. <br><br>
+            I am currently studding computer science (computer engineering in Spain) at the University of cordoba. <br>
+
+        </p>
+    </div>
+
+
+    {#<div class="ui raised segment" style="background: dimgrey; color: white; margin: 175px; top: -75px; margin-right: 575px; font-size: large">
+        <h2>About me</h2>
+        <p>
+            Hello! my name is Diego, I am a passionated backend developer, I have coded in C, C++, PHP, Python, Bash,
+            Zsh, Clips, Makefile and assembly, but I am not afraid to learn something new, in fact, I love it! <br>
+            I have participated in numerous projects, so I perform well with people. <br><br>
+            I am one of the leaders of a software group in my university and a common attendee and speaker of talks
+            in the Free Source Club in the University of Córdoba.
+        </p>
+    </div>
+
+    <img class="ui medium rounded image" src="/img/linux_book.jpg" style="fixed; position: absolute; top: 600px; right:200px">
+#}
+
+
+
+{% endblock %}
