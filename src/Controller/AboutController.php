@@ -49,6 +49,7 @@ class AboutController extends Controller
                 'controller_name' => 'AboutController',
                 'lines' => $terminal->getLines(),
                 'form'=> $form->createView(),
+                'active_tab'=> 'active',
             ]);
         }
         return $this->render('about/index.html.twig', [
