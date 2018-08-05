@@ -28,7 +28,6 @@ class AboutController extends Controller
             $terminal=$terminals[0];
         }else{
             //todo: remove all except one terminal
-            $stupidVar=0;
         }
 
         dump($phpsessid);
@@ -41,9 +40,22 @@ class AboutController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
-            $terminal->resolveInput();
+            $route=$terminal->resolveInput();
             $entityManager->persist($terminal);
             $entityManager->flush();
+
+            if ($route != null){
+                switch ($route){
+                    case "github";
+                        return $this->redirect("https://github.com/riera90");
+
+                    case "linkeding";
+                        return $this->redirect("https://www.linkedin.com/in/riera90/");
+
+                    default:
+                        return $this->redirect($route);
+                }
+            }
 
             return $this->render('about/index.html.twig', [
                 'controller_name' => 'AboutController',

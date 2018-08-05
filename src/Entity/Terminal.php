@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TerminalRepository")
@@ -132,8 +131,9 @@ class Terminal
         //adds the line of the command input to the terminal lines
         $this->addLine('diego@gamma '.$this->directory.' $ '.$this->getInput());
         //interprets the command
-        $this->resolveCommand();
+        $route=$this->resolveCommand();
         $this->setInput('');
+        return $route;
     }
 
     private function resolveCommand()
@@ -145,6 +145,7 @@ class Terminal
         $regexHelp = "/^help$/";
         $regexClear = "/^clear$/";
         $regexReset = "/^reset$/";
+        $regexPointSlash = "/^./";
 
         if (preg_match($regexLs, $this->getInput())) {
             if ($this->directory=='~'){
@@ -156,35 +157,35 @@ class Terminal
                 $this->addLine("projects");
                 $this->addLine("github");
                 $this->addLine("linkeding");
-                return;
+                return null;
             }
-            return;
+            return null;
         }
 
         if (preg_match($regexCd, $this->getInput())) {//cd is not a directory
-            if ($this->input=='cd resume' || $this->input=='cd about_me' || $this->input=='contact_me'
-            ||  $this->input=='projects'  || $this->input=='github'      || $this->input=='linkeding')
+            if ($this->input=='cd resume'   || $this->input=='cd about_me' || $this->input=='cd contact_me'
+            ||  $this->input=='cd projects' || $this->input=='cd github'   || $this->input=='cd linkeding')
             {
                 $this->addLine("cd: not a directory: ".substr($this->getInput(),2));
                 $this->addLine($terminalName.": exit 1");
-                return;
+                return null;
             }
 
             if ($this->getInput()=='cd ..' && $this->directory=='~'){//access denied
                 $this->addLine("cd: permission denied: ".substr($this->getInput(),2));
                 $this->addLine($terminalName.": exit 1");
-                return;
+                return null;
             }
 
             //the file does not exist
             $this->addLine("cd: no such file or directory: ".substr($this->getInput(),2));
             $this->addLine($terminalName.": exit 1");
-            return;
+            return null;
         }
 
         if (preg_match($regexCdHome, $this->getInput())) {
             $this->directory='~';
-            return;
+            return null;
         }
 
         if (preg_match($regexHelp, $this->getInput())) {
@@ -192,16 +193,43 @@ class Terminal
             $this->addLine("use the command 'ls' to list all files");
             $this->addLine("you can use './<filename>' to go to a certain page");
             $this->addLine("and 'cd <directory>' to change to another folder");
-            return;
+            return null;
         }
 
         if (preg_match($regexClear, $this->getInput())) {
             $this->clearTerminal();
-            return;
+            return null;
         }
 
         if (preg_match($regexReset, $this->getInput())) {
             $this->resetTerminal();
+            return null;
+        }
+
+        if (preg_match($regexPointSlash, $this->getInput())) {
+            switch ($this->getInput()){
+                case "./resume":
+                    return "/resume";
+
+                case "./about_me":
+                    return "/about_me";
+
+                case "./contact_me":
+                    return "/contact_me";
+
+                case "./projects":
+                    return "/projects";
+
+                case "./github":
+                    return "github";
+
+                case "./linkeding":
+                    return "linkeding";
+
+                default:
+                    $this->addLine("error 500, please contact the webmaster at www.github.com/riera90/my-website and open an issue, thanks.");
+                    return null;
+            }
             return;
         }
 
