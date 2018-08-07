@@ -230,7 +230,6 @@ class Terminal
                     $this->addLine("error 500, please contact the webmaster at www.github.com/riera90/my-website and open an issue, thanks.");
                     return null;
             }
-            return;
         }
 
         $this->addLine($terminalName.": command not found: " . $this->getInput());

@@ -1,20 +1,132 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello {{ controller_name }}!{% endblock %}
-
+{% block title %}homepage{% endblock %}
+{% block stylesheets %} {{ parent() }} {% endblock %}
+{% block topbar %} {{ parent() }} {% endblock %}
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="ui secondary pointing menu fixed sticky">
+        <a class="item" href="{{ path('about') }}">
+            About me
+        </a>
+        <a class="item" href="{{ path('contact') }}">
+            Contact me
+        </a>
+        <a class="item active" href="{{ path('projects') }}">
+            My projects
+        </a>
+        <a class="item" href="{{ path('resume') }}">
+            Resume
+        </a>
+        <div class="right menu">
+            <a href="http://github.com/riera90" style="margin-left: 10px; margin-top: 5px;">
+                <i class="big github black link icon"></i>
+            </a>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'src/Controller/ProjectsController.php'|file_link(0) }}">src/Controller/ProjectsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'templates/projects/index.html.twig'|file_link(0) }}">templates/projects/index.html.twig</a></code></li>
-    </ul>
-</div>
+            <a href="https://www.linkedin.com/in/riera90/" style="margin-left: 15px; margin-top: 5px; margin-right: 30px;">
+                <i class="big linkedin black link icon"></i>
+            </a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin-left: 175px; margin-right: 175px; margin-top: 125px; font-size: large">
+        <img class="ui medium rounded image" src="/img/gmf.png" style="float: right; width: 300px; margin: 0px; margin-right: 40px">
+        <h2><a href="https://github.com/riera90/generic-makefile" style="color: white">generic-makefile</a></h2>
+        <p>
+            Generic Makefile for C and C++ under GNU-Linux written in Makefile and Shell. <br>
+            This Makefile supports:
+            <ul>
+                <li>
+                    Dynamic linking with headers.
+                </li>
+                <li>
+                    Automatic generation of temporal folders.
+                </li>
+                <li>
+                    Automatic googletest integration.
+                </li>
+            </ul>
+        Developed in collaboration with Daniel Ranchal Parrado.
+        </p>
+        <p>
+            link to the
+            <a href="https://github.com/riera90/generic-makefile" style="color: deepskyblue;">github repository</a>
+        </p>
+    </div>
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin-left: 175px; margin-right: 175px; margin-top: 100px; font-size: large">
+        <img class="ui medium rounded image" src="/img/mya.png" style="float: right; width: 300px;margin: 25px; margin-top: 125px; ">
+        <h2><a href="https://github.com/danitico/ManageYourAirport" style="color: white">ManageYourAirport</a></h2>
+        <p>
+            A website written in php, html and JavaScript and using the Symfony framework, ManageYourAirport is a complete airport management tool intended for small airports. <br>
+            The website features:
+            <ul>
+                <li>
+                    Airplanes tracking (arrivals and departures).
+                </li>
+                <li>
+                    Luggage Tracking.
+                </li>
+                <li>
+                    Airport navigation for the user
+                </li>
+                <li>
+                    Users tracking and heatmap inside the airport.
+                </li>
+            </ul>
+            Developed in collaboration with Daniel Ranchal Parrado.
+        </p>
+        <p>
+            link to the
+            <a href="https://github.com/danitico/ManageYourAirport" style="color: deepskyblue;">github repository</a>
+        </p>
+    </div>
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin-left: 175px; margin-right: 175px; margin-top: 100px; font-size: large">
+        <h2><a href="https://github.com/riera90/willy" style="color: white">Willy in the space</a></h2>
+        <p>
+            A simple Artificial intelligence written in Clips for a competition in a subject at my University. <br>
+            The project got the 4º position from 50+ competitors. <br>
+            Developed in collaboration with Jorge Zafra. <br>
+            Warning, the documentation is in spanish!
+        </p>
+        <p>
+            link to the
+            <a href="https://github.com/riera90/willy" style="color: deepskyblue;">github repository</a>
+        </p>
+    </div>
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin-left: 175px; margin-right: 175px; margin-top: 100px; font-size: large">
+        <h2><a href="https://github.com/IronSenior/EvenBot" style="color: white">EventBot</a></h2>
+        <p>
+            A Telegram Bot written in Python during a hackaton. <br>
+            The telegram bot is a simple event organizer that supports location, invitations, event-chat and subscription to some categories
+            of events. <br>
+            Developed in collaboration with José Márquez Doblas and Iván Portillo. <br>
+        </p>
+        <p>
+            link to the
+            <a href="https://github.com/IronSenior/EvenBot" style="color: deepskyblue;">github repository</a>
+        </p>
+    </div>
+
+    <div class="ui raised segment" style="background: dimgrey; color: white; margin-left: 175px; margin-right: 175px; margin-top: 100px; margin-bottom: 150px; font-size: large">
+        <h2><a href="https://github.com/riera90/my-website" style="color: white">This Website!!</a></h2>
+        <p>
+            Written in php and html, using the Symfony framework, yup, Symfony again. <br>
+        </p>
+        <p>
+            link to the
+            <a href="https://github.com/riera90/my-website" style="color: deepskyblue;">github repository</a>
+        </p>
+    </div>
+
+
+
 {% endblock %}
