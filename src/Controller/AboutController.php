@@ -30,13 +30,8 @@ class AboutController extends Controller
             //todo: remove all except one terminal
         }
 
-        dump($phpsessid);
-
-
-        dump($terminals);
 
         $form = $this->createForm(TerminalType::class, $terminal);
-        //dump($terminal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -61,7 +56,6 @@ class AboutController extends Controller
                 'controller_name' => 'AboutController',
                 'lines' => $terminal->getLines(),
                 'form'=> $form->createView(),
-                'active_tab'=> 'active',
             ]);
         }
         return $this->render('about/index.html.twig', [

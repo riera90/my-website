@@ -28,10 +28,27 @@
         </div>
     </div>
 
+    {{ form_start(form) }}
+        <div class="ui form" style="margin: 75px">
+            <div class="field">
+                <div class="two fields">
+                    <div class="field">
+                        <label>Name</label>
+                        {{ form_widget(form.name, { 'attr': {'placeholder' : 'Enter your name', 'style' : 'color:white; background:black'} }) }}
+                    </div>
+                    <div class="field">
+                        <label>Email</label>
+                        {{ form_widget(form.email, { 'attr': {'placeholder' : 'Enter your Email', 'style' : 'color:white; background:black'} }) }}
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Message</label>
+                        {{ form_widget(form.message, { 'attr': {'placeholder' : 'Enter your Message', 'style' : 'color:white; background:black'} }) }}
 
-
-
-
-
+                </div>
+            </div>
+            <button class="ui inverted button" type="submit">Submit</button>
+        </div>
+    {{ form_end(form) }}
 
 {% endblock %}
