@@ -1,0 +1,10 @@
+version: "3"
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - 0.0.0.0:8000:80
+    environment:
+      - DATABASE_URL=sqlite:///%kernel.project_dir%/var/data.db

@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  db:
+    image: postgres:11.0
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=admin
+
+  web:
+    build: .
+    ports:
+      - 0.0.0.0:80:80
+    environment:
+      - DATABASE_URL=pgsql://admin:password@172.19.0.2:5432/dauco
+      - DRIVER='pdo_pgsql'
+      - CHARSET=utf8
+      - COLLATE=utf8_unicode_ci
+    depends_on:
+     - db
