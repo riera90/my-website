@@ -11,14 +11,12 @@ services:
 
   web:
     build: .
-    restart: always
     ports:
       - 0.0.0.0:80:80
     environment:
-      - DATABASE_URL=pgsql://admin:password@db:5432/db
+      - DATABASE_URL=pgsql://admin:password@db:5432/dauco
       - DRIVER='pdo_pgsql'
       - CHARSET=utf8
       - COLLATE=utf8_unicode_ci
-    hostname: web
     depends_on:
       - db
