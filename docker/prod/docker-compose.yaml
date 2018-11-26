@@ -4,10 +4,14 @@ services:
   db:
     image: postgres:11.0
     restart: always
+    volumes:
+      - ~/backup/arenas/bd/config/my-postgres.conf:/etc/postgresql/postgresql.conf:z
+      - ~/backup/arenas/bd/data:/var/lib/postgresql/data:z
     environment:
       - POSTGRES_PASSWORD=password
       - POSTGRES_USER=admin
     hostname: db
+
 
   web:
     build: .
@@ -19,6 +23,7 @@ services:
       - DRIVER='pdo_pgsql'
       - CHARSET=utf8
       - COLLATE=utf8_unicode_ci
+      - ENV=dev
     hostname: web
     depends_on:
       - db

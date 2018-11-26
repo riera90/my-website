@@ -17,4 +17,6 @@ RUN php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 ADD . /app
 WORKDIR /app
 # Finally init.sh is launched to install dependencies, configure .env and launch the server
-CMD chmod +x ./init.sh && ./init.sh
+CMD composer install && \
+sed -i -r 's,(DATABASE_URL=).*,\1'"$DATABASE_URL"',' ./.env && \
+./bin/console server:run 0.0.0.0:80
